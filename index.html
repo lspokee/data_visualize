@@ -1,15 +1,23 @@
 <head>
     <style>
         @media only screen and (orientation:portrait) {
-            img.freeze {
+            div.modal {
                 height: 100vw;
-                /* width: 100vh; */
+                transform: rotate(90deg);
+            }
+
+            img.freeze {
+                height: 80vw;
                 transform: rotate(90deg);
             }
         }
+
+        div.modal {
+            width: 100vw;
+        }
+
         img.freeze {
-            height: 100vh;
-            /* width: 100vw; */
+            width: 80vw;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -17,18 +25,25 @@
         $(window).bind("resize", function () {
             screenOrientation = ($(window).width() > $(window).height()) ? 90 : 0;
         });
+        $(document).ready(function () {
+            $("div.modal").hide();
+        });
+
+        $("button#show").click(function () {
+            $("div.modal").show();
+        });
     </script>
 </head>
 
 <body>
     <div class="level1">
         text1
+
         <div class="level2">
             text2
             <div class="level3">
-                text3
+                <button id="show">show modal</button>
             </div>
-            <img class="freeze" src="fish.jpg">
         </div>
         <p>
             Do play they miss give so up. Words to up style of since world. We leaf to snug on no need. Way own
@@ -38,5 +53,8 @@
 
         </p>
 
+    </div>
+    <div class="modal">
+        <img class="freeze" src="fish.jpg">
     </div>
 </body>
